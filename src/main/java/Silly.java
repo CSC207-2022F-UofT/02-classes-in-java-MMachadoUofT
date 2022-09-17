@@ -3,10 +3,10 @@ import java.util.Arrays;
 /**
  * This file contains a few exercises to familiarize you with specific
  * class features in Java.
- *
+
  * You should read this file from top-to-bottom. Any tasks you are to complete
- * are labelled with TODO
- *
+ * are labelled with that toodly doo.
+
  * For your convenience, we have also included references to the
  * relevant readings for each task.
  */
@@ -16,11 +16,11 @@ public class Silly implements Comparable<Silly>{
      * 1. Java has variables known as "static" variables.
      * These are variables that exist in every instance of a class,
      * and which have the same value across all instances.
-     *
+
      * Below we have created a static variable (signified by the keyword
      * static) named my_static. The countStatic() method makes use of this
      * static variable.
-     *
+
      * (Relevant reading: 2.1. Static variables)
      */
     public static int my_static = 0;
@@ -72,20 +72,28 @@ public class Silly implements Comparable<Silly>{
         this.name = "Silly #" + number;
     }
 
-    /**
-     * TODO (Task 1): Create another constructor that takes in TWO parameters,
+    /*
+     *      (Task 1): Create another constructor that takes in TWO parameters,
      *       both of which are strings.
      *       Afterwards, set this.name to the concatenation of both
      *       strings (e.g. this.name = [first string] + [second string]).
      *       Make sure you document this method!
      */
 
-
-
+    /**
+     * Creates a new Silly object.
+     * This constructor takes in two Strings as arguments.
+     *
+     * @param firstName the first string in this Silly instance's name.
+     * @param secondName the second string in this Silly instance's name.
+     */
+    public Silly(String firstName, String secondName) {
+        this.name = firstName + secondName;
+    }
 
 
     public static void main(String[] args) {
-        /**
+        /*
          * Task 1 (continued): The below demonstrates how each of the Silly
          *                     constructors are called.
          *
@@ -106,8 +114,8 @@ public class Silly implements Comparable<Silly>{
         Silly x = new Silly("something");
         Silly y = new Silly("something else");
 
-        /**
-         * TODO (Task 2): Below are a bunch of calls to countStatic using
+        /*
+         *      (Task 2): Below are a bunch of calls to countStatic using
          *                two different instances of Silly.
          *                Fill out the expected_values array with the
          *                values that countStatic will return at each call.
@@ -116,7 +124,7 @@ public class Silly implements Comparable<Silly>{
         y.countStatic();
         x.countStatic();
         x.countStatic();
-        int[] expected_values = {};
+        int[] expected_values = {0, 1, 2, 3};
 
         System.out.println("The countStatic calls will return " + Arrays.toString(expected_values));
     }
@@ -124,23 +132,24 @@ public class Silly implements Comparable<Silly>{
     /**
      * 3. Whenever we try to build a string with an Object, the toString()
      *    method is called. This is equivalent to the __str__ method in Python.
-     *
+
      *    (Relevant reading: 2.3. toString)
-     *
+
      * Return the String representation of this Silly object (i.e. its name).
      *
      * @return the name of this Silly.
      */
     @Override
     public String toString(){
-        // TODO (Task 3): Implement the body of this method!
+        //      (Task 3): Implement the body of this method!
+        return this.name;
     }
 
     /**
      * 4. We can also override the equals() method, which is the equivalent of
      *    Python's __eq__; however, unlike Python, this is called when we use
      *    .equals() rather than == (which checks for ID equality in Java).
-     *
+
      *    (Relevant reading: 2.4. Equality)
      *
      * @param o   the object to compare to
@@ -148,8 +157,8 @@ public class Silly implements Comparable<Silly>{
      */
     @Override
     public boolean equals(Object o) {
-        /**
-         * TODO (Task 4): Complete the body of this method!
+        /*
+         *      (Task 4): Complete the body of this method!
          *                We've started it by checking the type of o for you.
          *                You just need to return true if the names are equal.
          */
@@ -161,6 +170,7 @@ public class Silly implements Comparable<Silly>{
 
         // Hint: to compare strings, we need to use .equals()
         //       e.g. s1.equals(s2)
+        return this.name.equals(other.name);
     }
 
     /**
@@ -185,8 +195,8 @@ public class Silly implements Comparable<Silly>{
      */
     @Override
     public int compareTo(Silly other) {
-        /**
-         * TODO (Task 5): Implement the body of this method.
+        /*
+         *      (Task 5): Implement the body of this method.
          *                A positive number should be returned if this.name
          *                is longer than other.name, a negative number if
          *                other.name is longer than this.name, and 0 if
@@ -194,10 +204,11 @@ public class Silly implements Comparable<Silly>{
          *                You can get the length of a string by using the
          *                .length() method.
          */
+        return this.name.length() - other.name.length();
     }
 
     /*
-     * TODO (Task 6): Submit the changes you made on GitHub!
+     *      (Task 6): Submit the changes you made on GitHub!
      *                When you submit it, go to the 'Actions' tab. You should
      *                be able to see this exercise being autograded!
      *
